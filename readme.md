@@ -1,3 +1,5 @@
+This repo contains snippets that do not work yet. This readme details the current state of code in each of the associated folders. Enter at your own risk.
+
 File index
 
 9.4.24-draggable-box-html - For creating a Miro-like card canvas for desktop browser
