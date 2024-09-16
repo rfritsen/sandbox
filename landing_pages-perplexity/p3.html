@@ -1,0 +1,131 @@
+<!-- "Add a dark blue background" -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your iOS App - Simplify Your Life</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #001f3f; /* Dark blue background */
+            color: #ffffff; /* White text for contrast */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 50px 0;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .subtitle {
+            font-size: 24px;
+            color: #d1d1d1; /* Lighter gray for subtitle */
+            margin-bottom: 40px;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #0071e3; /* Bright blue button */
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #005bb5; /* Darker blue on hover */
+        }
+        .features {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 80px;
+        }
+        .feature {
+            flex-basis: 30%;
+            text-align: center;
+        }
+        .feature img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        .feature h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #ffffff; /* White text for feature titles */
+        }
+        .feature p {
+            color: #d1d1d1; /* Lighter gray for feature descriptions */
+        }
+        .testimonials {
+            background-color: #002b5c; /* Slightly lighter blue for testimonials */
+            padding: 80px 0;
+            margin-top: 80px;
+        }
+        .testimonial {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .testimonial p {
+            font-size: 24px;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #ffffff; /* White text for testimonial */
+        }
+        .testimonial .author {
+            font-weight: bold;
+            color: #d1d1d1; /* Lighter gray for author */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Your iOS App</h1>
+            <p class="subtitle">Simplify your life with our innovative solution</p>
+            <a href="#" class="cta-button">Download Now</a>
+        </header>
+
+        <section class="features">
+            <div class="feature">
+                <img src="feature1-icon.png" alt="Feature 1">
+                <h3>Easy to Use</h3>
+                <p>Intuitive interface designed for simplicity and efficiency</p>
+            </div>
+            <div class="feature">
+                <img src="feature2-icon.png" alt="Feature 2">
+                <h3>Powerful Analytics</h3>
+                <p>Gain insights with our advanced data analysis tools</p>
+            </div>
+            <div class="feature">
+                <img src="feature3-icon.png" alt="Feature 3">
+                <h3>Secure & Private</h3>
+                <p>Your data is protected with industry-leading security measures</p>
+            </div>
+        </section>
+    </div>
+
+    <section class="testimonials">
+        <div class="container">
+            <div class="testimonial">
+                <p>"This app has revolutionized the way I manage my daily tasks. It's so intuitive and powerful!"</p>
+                <p class="author">- Jane Doe, Tech Enthusiast</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

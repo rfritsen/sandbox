@@ -1,0 +1,114 @@
+<!-- write a Javascript and HTML webpage that allows a user to create a draggable box, 
+ and allows the user to create a tooltip for the box that shows the contents of a linked page 
+ 
+ 9.5.24 note - this creates the draggable box, but is struggling to create a tooltip with stratchery.com and google.com. 
+ Most likely needs troubleshooting.
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draggable Box with Tooltip</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            position: absolute;
+            cursor: move;
+        }
+        #tooltip {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-width: 300px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Draggable Box with Tooltip</h1>
+    <button onclick="createBox()">Create Box</button>
+    <input type="text" id="urlInput" placeholder="Enter URL for tooltip">
+    <button onclick="addTooltip()">Add Tooltip</button>
+
+    <div id="container"></div>
+    <div id="tooltip"></div>
+
+    <script>
+        let box;
+        let isDragging = false;
+        let offset = { x: 0, y: 0 };
+        let tooltip;
+
+        function createBox() {
+            if (!box) {
+                box = document.createElement('div');
+                box.id = 'box';
+                document.getElementById('container').appendChild(box);
+                
+                box.addEventListener('mousedown', startDragging);
+                document.addEventListener('mousemove', drag);
+                document.addEventListener('mouseup', stopDragging);
+            }
+        }
+
+        function startDragging(e) {
+            isDragging = true;
+            offset.x = e.clientX - box.offsetLeft;
+            offset.y = e.clientY - box.offsetTop;
+        }
+
+        function drag(e) {
+            if (isDragging) {
+                box.style.left = (e.clientX - offset.x) + 'px';
+                box.style.top = (e.clientY - offset.y) + 'px';
+            }
+        }
+
+        function stopDragging() {
+            isDragging = false;
+        }
+
+        function addTooltip() {
+            if (box) {
+                const url = document.getElementById('urlInput').value;
+                if (url) {
+                    tooltip = document.getElementById('tooltip');
+                    
+                    box.addEventListener('mouseover', () => showTooltip(url));
+                    box.addEventListener('mouseout', hideTooltip);
+                } else {
+                    alert('Please enter a URL for the tooltip');
+                }
+            } else {
+                alert('Please create a box first');
+            }
+        }
+
+        function showTooltip(url) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    tooltip.innerHTML = data;
+                    tooltip.style.display = 'block';
+                    tooltip.style.left = (box.offsetLeft + box.offsetWidth + 10) + 'px';
+                    tooltip.style.top = box.offsetTop + 'px';
+                })
+                .catch(error => {
+                    console.error('Error fetching tooltip content:', error);
+                    tooltip.innerHTML = 'Error loading content';
+                    tooltip.style.display = 'block';
+                });
+        }
+
+        function hideTooltip() {
+            tooltip.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
