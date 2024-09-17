@@ -15,7 +15,7 @@ forgettingCurve - For visualizing optimal spaced repetition periods for high-vol
     claude - Claude allows image uploads. Asked for the photo in React and Python.
     perplexity - Asked for a line chart between two non-zero datapoints in Javascript
 
-ios
+ios-apps
     A-nav-stack
         7.31.24-nav_stack_play_2 (Fix needed) - Button to launch view of NavStack list. List currently just goes back to the home button.
         7.25.24-view-play1(Fix needed) - Button to move to new view, but doesn't save the entered text.
