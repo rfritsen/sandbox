@@ -12,12 +12,12 @@ import json
 def scrape_jpmc_jobs():
     url = "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1002/requisitions"
     params = {
-        "location": "New York, NY, United States",
-        "locationId": "300000020694566",
-        "locationLevel": "city",
-        "mode": "location",
-        "radius": "25",
-        "radiusUnit": "MI"
+    #     "location": "New York, NY, United States",
+    #     "locationId": "300000020694566",
+    #     "locationLevel": "city",
+    #     "mode": "location",
+    #     "radius": "25",
+    #     "radiusUnit": "MI"
     }
 
     headers = {
@@ -28,19 +28,23 @@ def scrape_jpmc_jobs():
     soup = BeautifulSoup(response.content, 'html.parser')
 
     # Find the script tag containing job data
-    script_tag = soup.find('script', id='jobsState')
+    # script_tag = soup.find('script', id='jobsState')
+    script_tag = soup.find('class=job-grid-item_link')
+    # script_tag = soup.find_all(id='210485334')
+    # script_tag = soup.find('div')
     if script_tag:
-        job_data = json.loads(script_tag.string)
-        jobs = job_data.get('requisitionList', [])
+        print("The jobs are here", script_tag)
+    #     job_data = json.loads(script_tag.string)
+    #     jobs = job_data.get('requisitionList', [])
 
-        for job in jobs:
-            title = job.get('Title', 'N/A')
-            job_id = job.get('Id', 'N/A')
-            location = job.get('PrimaryLocation', 'N/A')
-            print(f"Job Title: {title}")
-            print(f"Job ID: {job_id}")
-            print(f"Location: {location}")
-            print("---")
+    #     for job in jobs:
+    #         title = job.get('Title', 'N/A')
+    #         job_id = job.get('Id', 'N/A')
+    #         location = job.get('PrimaryLocation', 'N/A')
+    #         print(f"Job Title: {title}")
+    #         print(f"Job ID: {job_id}")
+    #         print(f"Location: {location}")
+    #         print("---")
     else:
         print("No job data found on the page.")
 
